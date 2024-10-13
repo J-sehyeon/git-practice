@@ -1,0 +1,24 @@
+# 터미널에 "git config" 입력을 통해 이를 사용한 명령어를 알 수 있음
+git config --global user.name "(본인이름)"
+git config --global user.email "(본인 이메일)"
+
+git init # 이 파일을 Git이 관리를 시작함.  / 폴더에 ".git" 이 숨긴 파일로 생성 / 이 파일을 지우면 Git 관리내역 삭제됨 
+
+git status  # 현재 Git이 관리하는 파일들의 상태를 Git의 시점으로 확인 가능
+- untracked # Git의 관리에 들어간 적 없는 파일  / "git add <file>..."을 통해 관리 대상에 추가
+
+.gitignore  # Git이 관리할 필요가 없거나 관리하면 안되는 파일 (자동 생성되는 파일 or 보안 파일)
+
+git add <file>...   # git add 파일 or git add . / 파일 하나 담기 or 모든 파일 담기  / Working Directory 에서 Staging Area 로 넘김
+
+git commit  # Vi 입력 모드로 진입
+- i # 입력 시작 / 명령어 입력 모드에서 텍스트 입력 모드로 전환
+- [ESC] # 입력 종료 / 텍스트 입력 모드에서 명령어 입력 모드로 전환
+- :q    # 저장 없이 종료
+- :q!   # 저장 없이 강제종료    / 입력한 것이 있을 때 사용
+- :wq   # 저장하고 종료 / 입력한 것이 있을 때 사용
+- k # 위로 스크롤
+- j # 아래로 스크롤
+git commit -m "<commit message>"    # commit과 동시에 메세지 입력 가능  / Vi 모드를 건너 뛸 수 있음
+
+git log # 지금까지의 commit 내역을 볼 수 있음   / 이 또한 Vi 모드로 종료는 :q 이다.

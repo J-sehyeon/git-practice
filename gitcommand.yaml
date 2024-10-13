@@ -1,6 +1,0 @@
-# 터미널에 "git config" 입력을 통해 이를 사용한 명령어를 알 수 있음
-git config --global user.name "(본인이름)"
-git config --global user.email "(본인 이메일)"
-
-git init  # 이 파일을 Git이 관리를 시작함.  / 폴더에 ".git" 이 숨긴 파일로 생성 / 이 파일을 지우면 Git 관리내역 삭제됨
-git status  # 현재 Git이 관리하는 파일들의 상태를 Git의 시점으로 확인 가능
