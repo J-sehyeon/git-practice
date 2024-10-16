@@ -20,5 +20,23 @@ git commit  # Vi 입력 모드로 진입
 - k # 위로 스크롤
 - j # 아래로 스크롤
 git commit -m "<commit message>"    # commit과 동시에 메세지 입력 가능  / Vi 모드를 건너 뛸 수 있음
+git commit -am "<commit message>"   # add와 commit을 동시에 할 수 있음  / untracked 파일이 없을 때 한정함
 
 git log # 지금까지의 commit 내역을 볼 수 있음   / 이 또한 Vi 모드로 종료는 :q 이다.
+
+git diff    # 변경 사항(차이점)을 보여줌    / 변경 사항을 "git add ."를 사용해 Staging Area로 넘기면 git diff에는 아무것도 나타나지 않음.
+---
+practice.yalm   # 파일 이름
+#내용
+team: a
+
+manager: b
+
+
+members:
+- c
+- d
+...
+# 이 파일을 추가하고 "tigers.yalm"파일 삭제, "pumas.yalm"의 manager를 "Jude"에서 "Elice"로 변경
+
+
