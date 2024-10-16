@@ -39,4 +39,11 @@ members:
 ...
 # 이 파일을 추가하고 "tigers.yalm"파일 삭제, "pumas.yalm"의 manager를 "Jude"에서 "Elice"로 변경
 
+# reset or revert   / 과거로 돌아가는 두 가지 방법
+# 커밋 해시는 "git log"를 통해 얻을 수 있음 / ex) commit b4a531b02fc2fe4c7fc477eb9affc419403f6dac
+git reset --hard (돌아갈 커밋 해시) # 해당 커밋 상태로 초기화   / ex) git reset --hard b4a531b
+git reset --hard    # 마지막 커밋으로 이동
 
+git revert (되돌릴 커밋 해시)   # 해당 커밋 변경 사항을 역으로 되돌림(삭제된 파일은 복구...)    / ":wq"로 종료
+# conflict 발생 / ex) 새로 파일을 생성한 커밋으로 revert 할 때 현재 커밋과 되돌릴 커밋 사이에서 해당 파일을 수정한 내역이 있을 때 발생
+git revert --no-commit (되돌릴 커밋 해시)   # 원하는 다른 작업을 추가로 진행 후 커밋    / 취소하려면 "git reset --hard"사용
