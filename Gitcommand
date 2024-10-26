@@ -53,7 +53,28 @@ git Branch  # branch 목록 확인
 git branch <branch name>    # <branch name>이란 이름의 브랜치 생성
 git switch <branch name>    # <branch name>브랜치로 이동    / "checkout"명령어가 Git 2.23 버전부터 "switch", "restore"로 분리
 git switch -c <branch name> # 브랜치 생성과 동시에 이동 / 기존에는 "git checkout -b <branch name>"사용
-git branch -d <branch name> # 해당 브랜치 삭제  / 지워질 브랜치에만 있는 내용의 커밋이 있을 경우 "-d"대신 "-D"를 사용해
+git branch -d <branch name> # 해당 브랜치 삭제  / 지워질 브랜치에만 있는 내용의 커밋이 있을 경우 "-d"대신 "-D"를 사용해 / "merge"로 사용이
+                            # 끝난 브랜치를 삭제할 때 사용
 git branch -m <existing branch name> <new branch name>  # 브랜치 이름 바꾸기
 
-git log --all --decorate --online --graph   # 여러 브랜치의 내역을 볼 수 있음   / "git log"에서는 현재 브랜치의 내역만 확인
+git log --all --decorate --oneline --graph      # 여러 브랜치의 내역을 볼 수 있음   / "git log"에서는 현재 브랜치의 내역만 확인
+
+# merge or rebase   / A브랜치와 B브랜치가 있다고 가정하고 설명하겠음
+git merge <B:branch name>   # A브랜치로 switch 이후 "merge"를 해서 두 브랜치가 합쳐진 새로운 커밋을 만든다.
+# merge도 하나의 커밋이므로 reset으로 되돌리기 가능 / 병합된 브랜치는 "git branch -d ---"로 삭제
+git rebase <A:branch name>  # B브랜치에서 A브랜치로 B브랜치를 rebase한다.   / A브랜치의 마지막 커밋 다음으로 B브랜치 커밋 내역 생성
+                            # A브랜치가 B브랜치보다 뒤떨어져 있으므로 A브랜치에서 "git merge <B:branch name>"를 통해 A브랜치에 B브랜치  
+                            # 커밋 내역을 추가한다. 이후 B브랜치 제거
+
+# 충돌 해결하기 / 두 브랜치에서 수정 내역이 서로 다를 때 발생   / ex) M브랜치: a -> b, R브랜치: a -> c  / 이 때 컴퓨터는 둘 중 하나를
+# 선택할 지 혹은 두가지 모두 선택할 지를 물어본다.  / Accept Current Change, Accept Incoming Change, Accept Both Changes, Compare Changes
+# 충돌이 생겼을 때 오류 메세지와 git status 확인
+git merge --abort   # 충돌 해결이 어려울 경우 강제 중단
+# 충돌 해결 후 "git add ."로 변경사항 추가 후 "git commit"을 하면 자동으로 "Merge branch '<branch name>'"라는 커밋 메세지가 적혀있다.
+# 이후 병합 완료
+git rebase --abort  # 충돌 해결이 어려울 경우 강제 중단
+git rebase --continue   # 충돌 해결이 가능할 때 사용    / 충돌 부분을 수정 후 "git add .", 그 다음 "git rebase --continue"를 통해 커밋
+# :wq로 커밋 종료 후 다음 충돌 해결
+# 만약 Accept Current Change를 할 경우 rebase의 의미가 없으므로 커밋이 생성되지 않음
+
+
