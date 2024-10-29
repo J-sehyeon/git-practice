@@ -106,3 +106,5 @@ git push -u origin for-expe # 원격과 해당 브랜치 연결
 # Github에서 브랜치 생성 후 연결
 git fetch   # 원격의 변경사항 불러오기  / 이후 "git branch -a"로 생성된 브랜치 확인
 git switch -t origin/<branch name>  # 로컬에 같은 이름의 브랜치 생성 후 연결하고 switch
+
+git push <remote name> --delete <remote branch name>
